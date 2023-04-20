@@ -322,7 +322,7 @@ html {
 
 /*  CHIP  */
 .chip {
-  grid-column: 1/6;
+  grid-column: 1/4;
   grid-row: 3/1;
   justify-self: center;
   width: 17rem;
@@ -350,7 +350,7 @@ html {
   color: var(--greyDark);
 }
 .chip2 {
-  grid-column: 1/6;
+  grid-column: 1/4;
   grid-row: 1/11;
   justify-self: center;
   width: 43rem;
