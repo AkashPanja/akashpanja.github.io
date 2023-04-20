@@ -346,7 +346,7 @@ html {
 }
 .chip p {
   font-size: 6.9rem;
-  margin-left: -12.8rem;
+  margin-left: -1.8rem;
   color: var(--greyDark);
 }
 .chip2 {
@@ -363,7 +363,7 @@ html {
 }
 .chip2 p {
   font-size: 4.9rem;
-  margin-left: 0.2rem;
+  margin-left: 11.2rem;
   color: var(--greyDark);
 }
 .chip__close {
