@@ -362,8 +362,8 @@ html {
   align-items: center;
 }
 .chip2 p {
-  font-size: 9.2rem;
-  margin-left: 11.2rem;
+  font-size: 4.2rem;
+  margin-left: 9.2rem;
   color: var(--greyDark);
 }
 .chip__close {
