@@ -46,15 +46,16 @@ html {
 }
 #DateHolder{
   position: relative;
-  top: 59px;
+  top: 42px;
   right: 60px;
   float: right;
   color:white;
+  font-size:50px;
 }
 #TimeHolder{
   position: relative;
   top: 298px;
-  right: -196px;
+  right: -315px;
   float: right;
   color:white;
   font-size:87px;
@@ -65,8 +66,8 @@ html {
     #00affa 30%,
     #0190cd 70%,
     #764ada 80%
-  );
-   -webkit-background-clip: text;
+  ); */
+  /* -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
@@ -75,10 +76,11 @@ html {
 }
 #TemperatureHolder{
   position: relative;
-  top: 59px;
+  top: 42px;
   Left: 130px;
   float: left;
   color:white;
+  font-size:50px;
 }
 .watch {
   border: 10px solid #fff;
