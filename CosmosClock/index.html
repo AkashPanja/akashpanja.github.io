@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Clock</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="overlay"></div>
+<div id="Digital">
+  <span id="DateHolder">Thursday, April 23</span>
+  <span id="TemperatureHolder">23°C</span>
+  <span id="TimeHolder">12:30 AM</span>
+</div>
+<div class="wrapper">
+  <div class="clock-wrap">
+    <div class="clock">
+    <div class="points"> </div>
+    <div class="points-mask"></div>
+    <span class="hours"></span>
+    <span class="minutes"></span>
+    <span class="seconds"></span>
+  </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="./script.js"></script>
+  <script>
+    // Define a function that updates the time
+    function updateTime() {
+  // Get the current date and time
+  let date = new Date();
+
+  // Get the hours and minutes
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+
+  // Convert the hours to 12-hour format and add AM or PM
+  let ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+
+  // Add a leading zero to the minutes if needed
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+
+  // Create the time string
+  let time = hours + ':' + minutes + ' ' + ampm;
+
+  // Get the p tag by its id
+  let p = document.getElementById('TimeHolder');
+
+  // Set the innerHTML of the p tag to the time string
+  p.innerHTML = time;
+}
+
+// Call the updateTime function every second
+setInterval(updateTime, 1000);
+
+function updateDate() {
+  // Get the current date
+  let date = new Date();
+
+  // Get the day of week, month and year
+  let day = date.toLocaleString('en-US', { weekday: 'long' });
+  let month = date.toLocaleString('en-US', { month: 'long' });
+  let year = date.getFullYear();
+
+  // Create the date string
+  let dateString = day + ', ' + month + ' ' + year;
+
+  // Get the p tag by its id
+  let p = document.getElementById('DateHolder');
+
+  // Set the innerHTML of the p tag to the date string
+  p.innerHTML = dateString;
+}
+
+// Call the updateDate function every second
+setInterval(updateDate, 1000);
+
+function getDelhiTemperature() {
+  // Use the OpenWeatherMap API to fetch the current temperature in Delhi
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=Delhi,India&id=524901&appid=dd783a17a7728a914639274d3f3272d1&units=metric')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // Log the response data to the console
+      // Update the temperature element on the page with the current temperature
+      const temperatureElement = document.getElementById('TemperatureHolder');
+      temperatureElement.innerHTML = data.main.temp.toFixed(1)+"°C";
+    })
+    .catch(error => console.error(error));
+}
+
+setInterval(getDelhiTemperature, 3600);
+getDelhiTemperature();
+</script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500");
+/* Font */
+@font-face {
+  font-family: "ProductSansBold";
+  src: url("Fonts/ProductSansBold.ttf") format("truetype");
+}
+@font-face {
+font-family: "ProductSansRegular";
+src: url("Fonts/ProductSansRegular.ttf") format("truetype");
+}
+@keyframes textShine {
+  0% {
+      background-position: 0% 50%;
+  }
+  100% {
+      background-position: 100% 50%;
+  }
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Oswald', sans-serif;
+
+  /* background-image: radial-gradient(circle, #dfe9f3, transparent), linear-gradient(to bottom, #dee8f2, #d0e0ec); */
+  background-color: black;
+}
+#Digital{
+  height: 720px;
+  width: 1280px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  font-family: ProductSansRegular;
+  font-size: 34px;
+  color: white;
+  text-shadow: #000;
+}
+.overlay{
+  background-image: url(Asset/Design.png);
+  height: 720px;
+  width: 1280px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+#DateHolder{
+  position: relative;
+  top: 59px;
+  right: 60px;
+  float: right;
+  color:white;
+}
+#TimeHolder{
+  position: relative;
+  top: 298px;
+  right: -213px;
+  float: right;
+  color:white;
+  font-size:87px;
+  font-family: ProductSansBold;
+  background: linear-gradient(
+    to right,
+    #7953cd 20%,
+    #00affa 30%,
+    #0190cd 70%,
+    #764ada 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
+}
+#TemperatureHolder{
+  position: relative;
+  top: 59px;
+  Left: 130px;
+  float: left;
+  color:white;
+}
+.watch {
+  border: 10px solid #fff;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  transform: rotate(90deg);
+}
+.hours,
+.minutes,
+.seconds {
+  background: #000;
+  height: 6px;
+  transform-origin: 90%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
+  margin-left: 15px;
+  z-index: 2;
+  width: 160px;
+  border-radius: 8px;
+  height: 4px;
+}
+.hours {
+  width: 35%;
+  left: 50px;
+  height: 2px;
+  background-color: #180931;
+}
+.hours:after,
+.hours:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #180931;
+  transform: rotate(-1deg);
+  top: -1px;
+  position: absolute;
+}
+.hours:before {
+  top: 1px;
+  transform: rotate(1deg);
+}
+.seconds,
+.minutes {
+  width: 43%;
+  left: 7%;
+}
+.minutes {
+  background-image: linear-gradient(to left, #e1e6f1, #cdd7e8);
+}
+.seconds {
+  background-color: #ff1467;
+  height: 3px;
+}
+.seconds:before {
+  content: "";
+  display: block;
+  height: 9px;
+  width: 9px;
+  background-color: #ff1467;
+  position: absolute;
+  right: 10px;
+  border-radius: 50%;
+  bottom: -3px;
+}
+.seconds:after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 14px;
+  border: 1px solid #ff6fb6;
+  border-radius: 10px;
+  left: -12px;
+  top: 0;
+  position: absolute;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  flex-direction: column;
+  position: fixed;
+  top: 0px;
+  left:410px;
+}
+.clock-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clock {
+  height: 350px;
+  width: 350px;
+  z-index: 2;
+  border-radius: 50%;
+  transform: rotate(90deg);
+  position: relative;
+}
+.clock:before {
+  content: "";
+  display: block;
+  height: 350px;
+  width: 350px;
+  z-index: 0;
+  filter: blur(1px);
+  border-radius: 50%;
+  background-image: linear-gradient(to right, #dfeaf4 0%, #dde8f3 100%);
+  box-shadow: -15px 15px 26px 5px rgba(255,255,255,0.45), 0 -8px 16px 7px rgba(201,215,233,0.8), 0 -2px 5px 0 #c9d7e9, -2px 2px 5px 0 #fff;
+}
+.clock:after {
+  content: "";
+  display: block;
+  width: 264px;
+  height: 264px;
+  background-color: #ebf3f9;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px 5px #d0dceb, 20px 0 10px 0 rgba(208,220,235,0.4), -10px 20px 20px 5px rgba(208,220,235,0.2);
+}
+.points {
+  height: 330px;
+  width: 330px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  border-radius: 50%;
+}
+.points-mask {
+  display: block;
+  height: 340px;
+  width: 340px;
+  position: absolute;
+  top: calc(50% - 340px / 2);
+  left: calc(50% -340px / 2);
+  z-index: 0;
+  border-radius: 50%;
+  background-image: linear-gradient(-90deg, #dfe9f3 40%, transparent);
+}
+.point {
+  display: block;
+  height: 10px;
+  width: 2px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  box-shadow: 0 0px 18px 6px rgba(255,25,103,0);
+  transition: 0.1s;
+}
+.point:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #ff1967;
+  transform: translateY(-100%);
+  transition: 0.3s;
+}
+.point.active {
+  box-shadow: 0 20px 18px 4px rgba(255,25,103,0.5);
+}
+.point.active:after {
+  transform: translateY(0);
+}
+.point:nth-child(1) {
+  transform: translate(-2px, -165px);
+}
+.point:nth-child(2) {
+  transform: translate(15px, -164px) rotate(6deg);
+}
+.point:nth-child(3) {
+  transform: translate(31px, -162px) rotate(12deg);
+}
+.point:nth-child(4) {
+  transform: translate(47px, -157px) rotate(18deg);
+}
+.point:nth-child(5) {
+  transform: translate(64px, -150px) rotate(24deg);
+}
+.point:nth-child(6) {
+  transform: translate(79px, -142px) rotate(30deg);
+}
+.point:nth-child(7) {
+  transform: translate(94px, -134px) rotate(36deg);
+}
+.point:nth-child(8) {
+  transform: translate(107px, -123px) rotate(42deg);
+}
+.point:nth-child(9) {
+  transform: translate(119px, -111px) rotate(48deg);
+}
+.point:nth-child(10) {
+  transform: translate(128px, -99px) rotate(54deg);
+}
+.point:nth-child(11) {
+  transform: translate(138px, -85px) rotate(60deg);
+}
+.point:nth-child(12) {
+  transform: translate(145px, -69px) rotate(66deg);
+}
+.point:nth-child(13) {
+  transform: translate(151px, -53px) rotate(72deg);
+}
+.point:nth-child(14) {
+  transform: translate(155px, -37px) rotate(78deg);
+}
+.point:nth-child(15) {
+  transform: translate(158px, -21px) rotate(84deg);
+}
+.point:nth-child(16) {
+  transform: translate(159px, -4px) rotate(90deg);
+}
+.point:nth-child(17) {
+  transform: translate(158px, 12px) rotate(96deg);
+}
+.point:nth-child(18) {
+  transform: translate(155px, 29px) rotate(102deg);
+}
+.point:nth-child(19) {
+  transform: translate(151px, 45px) rotate(108deg);
+}
+.point:nth-child(20) {
+  transform: translate(145px, 60px) rotate(114deg);
+}
+.point:nth-child(21) {
+  transform: translate(137px, 74px) rotate(120deg);
+}
+.point:nth-child(22) {
+  transform: translate(128px, 90px) rotate(126deg);
+}
+.point:nth-child(23) {
+  transform: translate(117px, 103px) rotate(132deg);
+}
+.point:nth-child(24) {
+  transform: translate(106px, 113px) rotate(138deg);
+}
+.point:nth-child(25) {
+  transform: translate(93px, 124px) rotate(144deg);
+}
+.point:nth-child(26) {
+  transform: translate(79px, 134px) rotate(150deg);
+}
+.point:nth-child(27) {
+  transform: translate(64px, 142px) rotate(156deg);
+}
+.point:nth-child(28) {
+  transform: translate(49px, 146px) rotate(162deg);
+}
+.point:nth-child(29) {
+  transform: translate(32px, 150px) rotate(168deg);
+}
+.point:nth-child(30) {
+  transform: translate(16px, 154px) rotate(174deg);
+}
+.point:nth-child(31) {
+  transform: translate(-2px, 154px) rotate(180deg);
+}
+.point:nth-child(32) {
+  transform: translate(-18px, 154px) rotate(186deg);
+}
+.point:nth-child(33) {
+  transform: translate(-34px, 151px) rotate(192deg);
+}
+.point:nth-child(34) {
+  transform: translate(-50px, 147px) rotate(198deg);
+}
+.point:nth-child(35) {
+  transform: translate(-66px, 142px) rotate(204deg);
+}
+.point:nth-child(36) {
+  transform: translate(-81px, 134px) rotate(210deg);
+}
+.point:nth-child(37) {
+  transform: translate(-95px, 125px) rotate(216deg);
+}
+.point:nth-child(38) {
+  transform: translate(-107px, 114px) rotate(222deg);
+}
+.point:nth-child(39) {
+  transform: translate(-119px, 102px) rotate(228deg);
+}
+.point:nth-child(40) {
+  transform: translate(-129px, 90px) rotate(234deg);
+}
+.point:nth-child(41) {
+  transform: translate(-138px, 76px) rotate(240deg);
+}
+.point:nth-child(42) {
+  transform: translate(-146px, 60px) rotate(246deg);
+}
+.point:nth-child(43) {
+  transform: translate(-152px, 45px) rotate(252deg);
+}
+.point:nth-child(44) {
+  transform: translate(-157px, 29px) rotate(258deg);
+}
+.point:nth-child(45) {
+  transform: translate(-160px, 12px) rotate(264deg);
+}
+.point:nth-child(46) {
+  transform: translate(-161px, -5px) rotate(270deg);
+}
+.point:nth-child(47) {
+  transform: translate(-160px, -21px) rotate(276deg);
+}
+.point:nth-child(48) {
+  transform: translate(-157px, -38px) rotate(282deg);
+}
+.point:nth-child(49) {
+  transform: translate(-152px, -54px) rotate(288deg);
+}
+.point:nth-child(50) {
+  transform: translate(-146px, -70px) rotate(294deg);
+}
+.point:nth-child(51) {
+  transform: translate(-138px, -86px) rotate(300deg);
+}
+.point:nth-child(52) {
+  transform: translate(-129px, -100px) rotate(306deg);
+}
+.point:nth-child(53) {
+  transform: translate(-119px, -112px) rotate(312deg);
+}
+.point:nth-child(54) {
+  transform: translate(-107px, -123px) rotate(318deg);
+}
+.point:nth-child(55) {
+  transform: translate(-94px, -134px) rotate(324deg);
+}
+.point:nth-child(56) {
+  transform: translate(-80px, -144px) rotate(330deg);
+}
+.point:nth-child(57) {
+  transform: translate(-65px, -151px) rotate(336deg);
+}
+.point:nth-child(58) {
+  transform: translate(-50px, -157px) rotate(342deg);
+}
+.point:nth-child(59) {
+  transform: translate(-34px, -161px) rotate(348deg);
+}
+.point:nth-child(60) {
+  transform: translate(-18px, -164px) rotate(354deg);
+}
+.timer {
+  font-size: 3.5em;
+  font-weight: 400;
+  display: flex;
+  margin-top: 50px;
+  color: #fff;
+}
+.timer-colon {
+  color: #130c2a;
+  padding: 0 4px;
+  position: relative;
+  top: -5px;
+}
+.timer-seconds {
+  font-size: 0.5em;
+  font-weight: 500;
+  margin-left: 3px;
+}
+.footer {
+  color: #333;
+  padding: 10px 0;
+  opacity: 0.6;
+}
