@@ -55,7 +55,7 @@ html {
 #TimeHolder{
   position: relative;
   top: 298px;
-  right: -273px;
+  right: -243px;
   float: right;
   color:white;
   font-size:87px;
@@ -170,7 +170,7 @@ html {
   box-sizing: border-box;
   flex-direction: column;
   position: fixed;
-  top: 35px;
+  top: 65px;
   left:410px;
 }
 .clock-wrap {
