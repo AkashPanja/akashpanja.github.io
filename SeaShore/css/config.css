@@ -1,0 +1,26 @@
+#Hour {
+  display: contents;
+  font-size: 200px;
+}
+
+#Seprator {
+  display: inline;
+  font-size: 200px;
+}
+
+#Minutes {
+  display: inline;
+  font-size: 200px;
+}
+
+#Seconds {
+  display: inline-block;
+  font-size:  130px;
+  margin-left: 50px;
+  width: 170px;
+}
+
+#tt {
+  display: inline;
+  font-size: 130px;
+}

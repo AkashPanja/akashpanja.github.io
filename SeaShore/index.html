@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/config.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <meta name="description" content="">
+
+  <meta property="og:title" content="Blank Sea">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body style="background-color: black; display: inline-flex;">
+
+  <!-- Add your site or application content here -->
+  <div id="Time" class="jost-regular" style="color:white; display: inline-block; width: 639px; height: 100%; margin: auto;">
+    <div id="Hour">22</div>
+    <div id="Seprator">:</div>
+    <div id="Minutes">55</div><br>   
+    <div id="Seconds">34</div>    
+    <div id="tt">PM</div>
+  </div>
+  <div id="analogclock" style="display: inline-block; width: 639px; height: 720px; ">
+    <div style="height: 480px; width: 480px; display: block; background-color: aquamarine; border-radius: 480px; margin:125px 125px">
+    <img src="img/secondhand.png" id="SecondHand" style="display: inline-block; height: 480px; width: 480px; position: absolute; transform-origin: center; z-index: 1;"/>
+    <img src="img/minutehand.png" id="MinuteHand" style="display: inline-block; height: 480px; width: 480px; position: absolute; transform-origin: center"/>
+    <img src="img/hourhand.png" id="HourHand" style="display: inline-block; height: 480px; width: 480px; position: absolute; transform-origin: center;"/>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/TimeConfig.js"></script>
+</body>
+
+</html>
