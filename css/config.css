@@ -1,0 +1,20 @@
+#Hour {
+  font-size: 120px;
+}
+
+#Minutes {
+  font-size: 120px;
+}
+
+#Date {
+  font-size: 120px;
+}
+
+#Day {
+  font-size: 95px;
+}
+
+#Month {
+  font-size: 80px;
+  text-overflow: clip;
+}
