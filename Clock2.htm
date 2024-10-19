@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lexend', sans-serif;
+        }
+        body {
+            position: relative;
+            box-shadow: inset 0 0 2000px #0b2702; /* Initial shadow */
+            animation: shadowPulse 2s infinite; /* Add animation */
+        }
+        @keyframes shadowPulse {
+            0%, 100% {
+                box-shadow: inset 0 0 2000px #0b2702; /* Dark green shadow */
+            }
+            50% {
+                box-shadow: inset 0 0 200px #004a55; /* Dark teal shadow */
+            }
+        }
+        #clock, #date, #month {
+            position: relative;
+            z-index: 1;
+            color: #000; /* Black text */
+            text-align: center;
+            word-wrap: break-word; /* Ensure text wraps properly */
+        }
+        #clock {
+            font-size: 16vw; /* Adjust font size to 16% of viewport width */
+            max-width: 139vw; /* Limit text width to 139% of viewport width */
+        }
+        #date {
+            font-size: 8vw; /* Adjust date font size */
+            margin-bottom: -2vw; /* Adjust margin to position date above time */
+        }
+        #month {
+            font-size: 8vw; /* Adjust month font size */
+        }
+    </style>
+</head>
+<body>
+    <div id="date"></div>
+    <div id="month"></div>
+    <div id="clock"></div>
+    
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            document.getElementById('clock').innerText = timeString;
+
+            // Update date
+            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var months = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            var day = days[now.getDay()];
+            var month = months[now.getMonth()];
+            var date = day + ', ' + now.getDate();
+            document.getElementById('date').innerText = date;
+            document.getElementById('month').innerText = month;
+        }
+
+        // Update the clock, date, and month every second
+        setInterval(updateClock, 1000);
+        // Initialize clock, date, and month at page load
+        updateClock();
+    </script>
+</body>
+</html>
