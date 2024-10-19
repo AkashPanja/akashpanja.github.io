@@ -17,26 +17,20 @@
             justify-content: center;
             align-items: center;
             font-family: 'Lexend', sans-serif;
+            background-color: black;
         }
         body {
             position: relative;
-            box-shadow: inset 0 0 2000px #0b2702; /* Initial shadow */
-            animation: shadowPulse 2s infinite; /* Add animation */
-        }
-        @keyframes shadowPulse {
-            0%, 100% {
-                box-shadow: inset 0 0 2000px #0b2702; /* Dark green shadow */
-            }
-            50% {
-                box-shadow: inset 0 0 200px #004a55; /* Dark teal shadow */
-            }
         }
         #clock, #date, #month {
             position: relative;
             z-index: 1;
-            color: #000; /* Black text */
+            color: #ffffff; /* Black text */
             text-align: center;
             word-wrap: break-word; /* Ensure text wraps properly */
+            background: -webkit-linear-gradient(#eee, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         #clock {
             font-size: 16vw; /* Adjust font size to 16% of viewport width */
@@ -49,6 +43,7 @@
         #month {
             font-size: 8vw; /* Adjust month font size */
         }
+    
     </style>
 </head>
 <body>
