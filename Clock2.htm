@@ -40,6 +40,15 @@
         #month {
             font-size: 8vw; /* Adjust month font size */
         }
+
+        #img1{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 0;
+            background: url('\img1.png') no-repeat center center;            
+        }
+
     
     </style>
 </head>
@@ -47,7 +56,7 @@
     <div id="date"></div>
     <div id="month"></div>
     <div id="clock"></div>
-    
+    <img id="img1" src="img1.png"/>
     <script>
         function updateClock() {
             var now = new Date();
