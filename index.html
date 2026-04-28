@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Akash Panja — RPA Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f8f6;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #e8e6e1;
+      --accent: #2d5be3;
+      --accent-soft: #eef1fc;
+      --tag-bg: #f2f0eb;
+      --tag-text: #444;
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(249,248,246,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 32px 120px;
+    }
+
+    /* ── HERO ── */
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+    .eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px 3px 6px;
+      font-size: 12.5px;
+      color: var(--text);
+    }
+    .eyebrow-badge .dot {
+      width: 7px; height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(38px, 6vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .hero-heading .inline-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px; height: 54px;
+      background: var(--text);
+      border-radius: 14px;
+      margin: 0 4px;
+      vertical-align: middle;
+      position: relative;
+      top: -4px;
+      font-size: 28px;
+    }
+    .hero-heading .accent { color: var(--accent); }
+
+    .hero-subheading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .hero-subheading .inline-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px; height: 46px;
+      background: var(--tag-bg);
+      border-radius: 12px;
+      margin: 0 3px;
+      vertical-align: middle;
+      position: relative;
+      top: -3px;
+      font-size: 22px;
+    }
+
+    /* ── AVAILABILITY BADGES ── */
+    .availability {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 6px 14px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: default;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .avail-badge:hover { background: var(--tag-bg); border-color: #ccc; }
+    .avail-badge .badge-icon { font-size: 16px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-icon {
+      width: 36px; height: 36px;
+      background: var(--text);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      letter-spacing: -0.5px;
+    }
+
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #e8edf8 0%, #d0d9f0 100%);
+    }
+    .project-img-placeholder {
+      width: 100%;
+      height: 175px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    .project-body { padding: 18px; }
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .project-tag {
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--tag-text);
+      background: var(--tag-bg);
+    }
+    .project-tag.accent { background: var(--accent-soft); color: var(--accent); border-color: #c5d1f7; }
+    .project-tag.year { background: transparent; border-color: var(--border); }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      letter-spacing: -0.3px;
+      margin-bottom: 7px;
+      line-height: 1.2;
+    }
+    .project-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 64px;
+    }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 0 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-meta { padding-top: 2px; }
+    .exp-period {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .exp-client-tag {
+      display: inline-block;
+      font-size: 11px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid #c5d1f7;
+      border-radius: 20px;
+      padding: 2px 8px;
+      font-weight: 500;
+    }
+
+    .exp-company {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+      margin-bottom: 3px;
+    }
+    .exp-role {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .exp-bullets li {
+      font-size: 13.5px;
+      color: #444;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .exp-bullets li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    /* ── SKILLS GRID ── */
+    .skills-section { margin-bottom: 64px; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+    .skill-card-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .skill-pill {
+      font-size: 12px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 20px;
+      padding: 3px 9px;
+      font-weight: 400;
+    }
+
+    /* ── CERTS ── */
+    .certs-section { margin-bottom: 64px; }
+    .cert-list { display: flex; flex-direction: column; gap: 10px; }
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      transition: border-color 0.2s;
+    }
+    .cert-item:hover { border-color: #bbb; }
+    .cert-logo {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      background: var(--tag-bg);
+      flex-shrink: 0;
+    }
+    .cert-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .cert-issuer {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── ABOUT / CONTACT ── */
+    .about-section { margin-bottom: 64px; }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 600px) {
+      .about-card { grid-template-columns: 1fr; }
+    }
+    .about-text p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text);
+      text-decoration: none;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      transition: background 0.2s, border-color 0.2s;
+      font-weight: 400;
+    }
+    .contact-link:hover { background: #e8e6e0; border-color: #ccc; }
+    .contact-link .cl-icon { font-size: 18px; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer span { font-size: 13px; color: var(--muted); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+    .hero-heading  { animation: fadeUp 0.5s ease 0.08s both; }
+    .hero-subheading { animation: fadeUp 0.5s ease 0.14s both; }
+    .availability  { animation: fadeUp 0.5s ease 0.2s both; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Akash.</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero-eyebrow">
+    <span class="eyebrow-badge"><span class="dot"></span> Available for opportunities</span>
+    <span>· New Delhi, India</span>
+  </div>
+
+  <h1 class="hero-heading">
+    Hey, I'm <span class="inline-icon">🤖</span> <span class="accent">Akash</span>
+  </h1>
+  <p class="hero-subheading">
+    And I Build <span class="inline-icon">⚙️</span> Automations and
+    <span class="inline-icon">🧠</span> AI Workflows
+  </p>
+
+  <div class="availability">
+    <span class="avail-badge"><span class="badge-icon">💼</span> Full Time</span>
+    <span class="avail-badge"><span class="badge-icon">⚡</span> Contract</span>
+    <span class="avail-badge"><span class="badge-icon">🌐</span> Remote</span>
+    <span class="avail-badge"><span class="badge-icon">🏥</span> Healthcare</span>
+    <span class="avail-badge"><span class="badge-icon">🏦</span> Finance</span>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="work">
+    <div class="section-header">
+      <div class="section-icon">💼</div>
+      <h2 class="section-title">Meet some of my Works</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#dce8ff,#b8cff7);">🏥</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag accent">UiPath</span>
+            <span class="project-tag accent">Healthcare</span>
+            <span class="project-tag year">2024</span>
+          </div>
+          <h3 class="project-title">POS Claim Settlements</h3>
+          <p class="project-desc">Automated POS claim validation, status updates, and daily reporting for a US healthcare client — eliminating manual data entry and reducing errors.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#e2d9f3,#c8b8ec);">🏦</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag accent">UiPath</span>
+            <span class="project-tag accent">Banking</span>
+            <span class="project-tag year">2023</span>
+          </div>
+          <h3 class="project-title">ID Management Bot</h3>
+          <p class="project-desc">24×7 operational bot for a major US bank — automatically reviewing and releasing emails blocked by Cisco security without human intervention.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#d9f0e8,#a8dcc6);">📊</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag accent">UiPath</span>
+            <span class="project-tag accent">Real Estate</span>
+            <span class="project-tag year">2023</span>
+          </div>
+          <h3 class="project-title">Account Reconciliation</h3>
+          <p class="project-desc">Multi-application data integration for real estate account reconciliation, automated transaction matching and compliance reporting.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#fde8d8,#f7c4a3);">📈</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag accent">Blue Prism</span>
+            <span class="project-tag accent">Supply Chain</span>
+            <span class="project-tag year">2022</span>
+          </div>
+          <h3 class="project-title">Supply Chain Automation</h3>
+          <p class="project-desc">Automated supply chain and R&D workflows for Johnson & Johnson using reusable Blue Prism components for maximum scalability.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#fef3c7,#fde68a);">📑</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag accent">UiPath</span>
+            <span class="project-tag accent">Reporting</span>
+            <span class="project-tag year">2023</span>
+          </div>
+          <h3 class="project-title">Automated Weekly Reports</h3>
+          <p class="project-desc">End-to-end automated report generation — producing PowerPoint presentations with pivot tables and charts directly from Excel data sources.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-placeholder" style="background: linear-gradient(135deg,#fce7f3,#f9a8d4);">💳</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag accent">Blue Prism</span>
+            <span class="project-tag accent">Banking</span>
+            <span class="project-tag year">2021</span>
+          </div>
+          <h3 class="project-title">AmEx Process Automations</h3>
+          <p class="project-desc">Multiple Blue Prism automations for American Express across web, desktop, and mainframe applications — with POCs demonstrating strong ROI.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header">
+      <div class="section-icon">🏢</div>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+    <div class="experience-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Sep 2022 – Present</div>
+          <div style="margin-top:6px">
+            <span class="exp-client-tag">RiyadBank</span>
+          </div>
+          <div style="margin-top:5px">
+            <span class="exp-client-tag">Delta Air Lines</span>
+          </div>
+          <div style="margin-top:5px">
+            <span class="exp-client-tag">Regis Health</span>
+          </div>
+        </div>
+        <div>
+          <div class="exp-company">WonderBotz, LLC</div>
+          <div class="exp-role">RPA Developer (UiPath) · Remote</div>
+          <ul class="exp-bullets">
+            <li>Designed and delivered 15+ UiPath automation solutions reducing manual effort by up to 70%.</li>
+            <li>Built POS Claim Settlements process for US healthcare — validates claims, updates statuses, generates reports.</li>
+            <li>Implemented a 24×7 ID Management bot for a major US bank handling Cisco-blocked email releases.</li>
+            <li>Created automated weekly PowerPoint reporting from Excel with pivot tables and charts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Apr 2022 – Sep 2022</div>
+          <div style="margin-top:6px">
+            <span class="exp-client-tag">Johnson & Johnson</span>
+          </div>
+        </div>
+        <div>
+          <div class="exp-company">Wipro Ltd.</div>
+          <div class="exp-role">RPA Developer (Blue Prism)</div>
+          <ul class="exp-bullets">
+            <li>Automated supply chain and R&D workflows using reusable Blue Prism components for scalability.</li>
+            <li>Enhanced bot performance and deployed new processes from requirements to production.</li>
+            <li>Prepared PDDs/SDDs and collaborated closely with SMEs to align outputs with business needs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Sep 2018 – Feb 2022</div>
+          <div style="margin-top:6px">
+            <span class="exp-client-tag">American Express</span>
+          </div>
+        </div>
+        <div>
+          <div class="exp-company">Infosys Ltd.</div>
+          <div class="exp-role">RPA Developer / Production Support (Blue Prism)</div>
+          <ul class="exp-bullets">
+            <li>Designed Blue Prism automations for web, desktop, and mainframe applications at AmEx.</li>
+            <li>Delivered multiple POCs demonstrating automation feasibility and clear ROI.</li>
+            <li>Performed production bug fixes and process enhancements to improve efficiency.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section">
+    <div class="section-header">
+      <div class="section-icon">🛠️</div>
+      <h2 class="section-title">Core Competencies</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-label">RPA Platforms</div>
+        <div class="skill-pills">
+          <span class="skill-pill">UiPath</span>
+          <span class="skill-pill">Blue Prism</span>
+          <span class="skill-pill">Orchestrator</span>
+          <span class="skill-pill">Doc. Understanding</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Programming</div>
+        <div class="skill-pills">
+          <span class="skill-pill">VB.NET</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">HTML</span>
+          <span class="skill-pill">CSS</span>
+          <span class="skill-pill">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Databases</div>
+        <div class="skill-pills">
+          <span class="skill-pill">MS SQL Server</span>
+          <span class="skill-pill">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">AI & OCR</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Agentic AI</span>
+          <span class="skill-pill">ABBYY FlexiCapture</span>
+          <span class="skill-pill">OCR Solutions</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Integration</div>
+        <div class="skill-pills">
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">SOAP</span>
+          <span class="skill-pill">Excel Automation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-label">Process Skills</div>
+        <div class="skill-pills">
+          <span class="skill-pill">PDD/SDD Docs</span>
+          <span class="skill-pill">Process Design</span>
+          <span class="skill-pill">UAT</span>
+          <span class="skill-pill">Bug Fixing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certs-section">
+    <div class="section-header">
+      <div class="section-icon">🏅</div>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="cert-list">
+      <div class="cert-item">
+        <div class="cert-logo">🤖</div>
+        <div>
+          <div class="cert-name">Automation Developer Professional</div>
+          <div class="cert-issuer">UiPath Certified Professional</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo">🏗️</div>
+        <div>
+          <div class="cert-name">Automation Solution Architect Professional</div>
+          <div class="cert-issuer">UiPath Certified Professional</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo">⚙️</div>
+        <div>
+          <div class="cert-name">Infrastructure Engineer – Automation Suite</div>
+          <div class="cert-issuer">UiPath Certified Professional</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo">🔵</div>
+        <div>
+          <div class="cert-name">Blue Prism Certified Developer</div>
+          <div class="cert-issuer">SS&C BluePrism</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo">📄</div>
+        <div>
+          <div class="cert-name">FlexiCapture 12 Certified Specialist</div>
+          <div class="cert-issuer">ABBYY</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-logo">🦾</div>
+        <div>
+          <div class="cert-name">Level I Certification</div>
+          <div class="cert-issuer">RoboCorp</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / CONTACT -->
+  <section id="contact" class="about-section">
+    <div class="section-header">
+      <div class="section-icon">👋</div>
+      <h2 class="section-title">About & Contact</h2>
+    </div>
+    <div class="about-card">
+      <div class="about-text">
+        <p>RPA Developer with <strong>7 years of experience</strong> delivering automation solutions across healthcare, pharma, finance, and banking sectors.</p>
+        <p>Proficient in <strong>UiPath</strong> and <strong>Blue Prism</strong>, with a track record of 15+ successful automation deployments reducing manual effort by up to 70%.</p>
+        <p>When not building bots, I'm into cycling, PC gaming, and tinkering with Home Automation using Home Assistant & ESP32.</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:akash.panja@gmail.com">
+          <span class="cl-icon">✉️</span>
+          akash.panja@gmail.com
+        </a>
+        <a class="contact-link" href="tel:+919582894071">
+          <span class="cl-icon">📱</span>
+          +91 95828 94071
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/akashpanja" target="_blank" rel="noopener">
+          <span class="cl-icon">🔗</span>
+          LinkedIn Profile
+        </a>
+        <a class="contact-link" href="https://github.com/akashpanja" target="_blank" rel="noopener">
+          <span class="cl-icon">🐙</span>
+          GitHub Profile
+        </a>
+        <a class="contact-link" href="Akash_Panja_Resume.pdf" download>
+          <span class="cl-icon">📄</span>
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2025 Akash Panja · New Delhi, India</span>
+  <span>Built with HTML · Hosted on GitHub Pages</span>
+</footer>
+
+</body>
+</html>
